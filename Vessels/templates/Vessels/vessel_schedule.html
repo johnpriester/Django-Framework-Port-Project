@@ -1,0 +1,32 @@
+{% block content %}
+  <h1>{{ vessel.vessel_name }} Schedule</h1>
+  <p><strong>Departing from:</strong> {{ schedules.first.portcall_set.first.port }}</p>
+  <p><strong>Destination:</strong> {{ schedules.last.portcall_set.last.port }}</p>
+  <hr>
+  <table>
+    <thead>
+      <tr>
+        <th>Voyage Number</th>
+        <th>Port</th>
+        <th>Port Country</th>
+        <th>Arrival</th>
+        <th>Departure</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for schedule in schedules %}
+        {% for portcall in schedule.portcall_set.all %}
+          <tr>
+            {% if forloop.first %}
+              <td rowspan="{{ schedule.portcall_set.count }}">{{ schedule.voyage_number }}</td>
+            {% endif %}
+            <td>{{ portcall.port }}</td>
+            <td>{{ portcall.port_country }}</td>
+            <td>{{ portcall.arrival }}</td>
+            <td>{{ portcall.departure }}</td>
+          </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

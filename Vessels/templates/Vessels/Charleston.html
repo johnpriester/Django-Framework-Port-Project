@@ -1,0 +1,10 @@
+
+
+{% block content %}
+<h1>Vessels coming into Charleston</h1>
+<ul>
+{% for vessel in vessels %}
+    <li>{{ vessel.vessel_name }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% block content %}
+    <h1>Vessels</h1>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Vessel Names:</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vessel in vessels %}
+                <tr>
+                    <td>{{ vessel.vessel_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
